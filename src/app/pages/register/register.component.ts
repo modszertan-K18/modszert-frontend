@@ -28,7 +28,9 @@ export class RegisterComponent {
 
     const registerData = { username: this.username, password: this.password };
 
-    this.http.post(`${environment.backendBaseUrl}/auth/register`, registerData).subscribe({
+    this.http.post(`${environment.backendBaseUrl}/auth/register`, registerData, {
+      withCredentials: true
+    }).subscribe({
       next: (response: any) => {
         console.log('Register successful', response);
         this.router.navigate(['/']);

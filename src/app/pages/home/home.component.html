@@ -1,3 +1,20 @@
-<button (click)="navigateToCreateProduct()" class="btn btn-success">
-  Add a product
-</button>
+<div class="container mt-4">
+
+    <h3 class="text-white mb-4">Products available for auction:</h3>
+
+  <button (click)="navigateToCreateProduct()" class="btn btn-success mb-3">
+    Add a Product
+  </button>
+
+  <div class="row">
+    <div *ngFor="let product of products" class="col-md-4 mb-4">
+      <div class="card h-100 bg-dark text-white">
+        <div class="card-body" (click)="navigateToProductPage(product)">
+          <h5 class="card-title">{{ product.productName }}</h5>
+          <p class="card-text">{{ product.productDescription }}</p>
+          <button class="btn btn-primary">See</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

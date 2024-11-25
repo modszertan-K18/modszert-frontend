@@ -55,7 +55,7 @@ export class ProductPageComponent {
 
 
 
-  isNightMode: boolean = false;
+
 
   toggleNightMode() {
     this.isNightMode = !this.isNightMode;

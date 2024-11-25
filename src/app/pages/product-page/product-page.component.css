@@ -1,0 +1,41 @@
+.card {
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+.progress {
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.progress-bar {
+  transition: width 0.5s ease;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: fadeIn 0.8s ease-in-out;
+}
+.card-body div.row:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s;
+}

@@ -6,12 +6,15 @@ import {NgClass} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
 import {Product} from './product-page.model';
 
+
 @Component({
   selector: 'app-product-page',
   standalone: true,
   imports: [
+
     FormsModule,
     NgClass
+
   ],
   templateUrl: './product-page.component.html',
   styleUrl: './product-page.component.css'
@@ -20,6 +23,8 @@ import {Product} from './product-page.model';
 
 
 export class ProductPageComponent {
+  isNightMode: boolean = false;
+
 
   protected productString: Params | undefined;
 
@@ -86,4 +91,5 @@ export class ProductPageComponent {
   }
 
   protected readonly Number = Number;
+
 }

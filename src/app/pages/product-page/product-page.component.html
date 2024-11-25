@@ -1,1 +1,96 @@
-<p>product-page works!</p>
+<div class="container mt-5">
+
+  <div class="progress">
+    <!--
+
+    This div will be implemented in the future to track the growth percentage from the previous price.
+
+    -->
+    <div
+      class="progress-bar bg-success"
+      role="progressbar"
+      [style.width.%]="(currentPrice-Number(startingPrice))/Number(startingPrice)  * 100"
+      aria-valuenow="25"
+      aria-valuemin="0"
+      aria-valuemax="100">
+
+      The products value increased by:{{(currentPrice-Number(startingPrice))/Number(startingPrice)  * 100}}%.
+
+    </div>
+  </div>
+
+  <div
+    class="card shadow-lg border-0"
+    [ngClass]="{'bg-light text-dark': !isNightMode, 'bg-dark text-white': isNightMode}"
+    style="border-radius: 1rem;"
+  >
+    <div
+      class="card-header text-center"
+      [ngClass]="{'bg-primary text-white': !isNightMode, 'bg-secondary text-light': isNightMode}"
+      style="border-top-left-radius: 1rem; border-top-right-radius: 1rem;"
+    >
+      <h3 class="fw-bold mb-0">Product Details</h3>
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-sm-4 fw-bold" [ngClass]="{'text-secondary': !isNightMode, 'text-light': isNightMode}">
+          Product Name:
+        </div>
+        <div class="col-sm-8" [ngClass]="{'text-dark': !isNightMode, 'text-white': isNightMode}">
+          {{ productName }}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-4 fw-bold" [ngClass]="{'text-secondary': !isNightMode, 'text-light': isNightMode}">
+          Product Description:
+        </div>
+        <div class="col-sm-8" [ngClass]="{'text-dark': !isNightMode, 'text-white': isNightMode}">
+          {{ productDescription }}
+        </div>
+      </div>
+      <!--
+
+      Somewhere here will be the display current user who is the NR.1 bidder.
+
+      -->
+
+      <div class="row mb-3">
+        <div class="col-sm-4 fw-bold" [ngClass]="{'text-secondary': !isNightMode, 'text-light': isNightMode}">
+          Current Price:
+        </div>
+        <div class="col-sm-8 fw-bold text-primary">{{ currentPrice }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-4 fw-bold" [ngClass]="{'text-secondary': !isNightMode, 'text-light': isNightMode}">
+          Starting Price:
+        </div>
+        <div class="col-sm-8 fw-bold text-success">{{ startingPrice }}</div>
+      </div>
+      <div class="row align-items-center mb-4">
+        <div class="col-sm-4 fw-bold" [ngClass]="{'text-secondary': !isNightMode, 'text-light': isNightMode}">
+          Place Your Bid:
+        </div>
+        <div class="col-sm-4">
+          <input
+            [(ngModel)]="bid"
+            type="number"
+            class="form-control border-2"
+            placeholder="Enter your bid"
+            [style.border-color]="isNightMode ? '#adb5bd' : '#0d6efd'"
+            min="{{ startingPrice }}"
+            required
+          />
+        </div>
+        <div class="col-sm-4 text-center">
+          <button class="btn btn-success btn-lg px-4" (click)="sendBid(bid)">Submit Bid</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-center" [ngClass]="{'bg-white': !isNightMode, 'bg-dark text-light': isNightMode}" style="border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem;">
+      <button class="btn btn-danger btn-lg px-4" (click)="returnToHome()">Return to Homepage</button>
+    </div>
+  </div>
+  <div class="text-center mt-3">
+    <button class="btn btn-secondary" (click)="toggleNightMode()">Toggle Night Mode</button>
+  </div>
+</div>

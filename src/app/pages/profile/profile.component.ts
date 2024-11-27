@@ -1,17 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {AuthService} from './services/AuthService/auth.service';
-import {TUser} from '../types/TUser';
+import {AuthService} from '../../services/AuthService/auth.service';
+import {TUser} from '../../../types/TUser';
+import {NgIf} from '@angular/common';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-profile',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [
+    NgIf
+  ],
+  templateUrl: './profile.component.html',
+  styleUrl: './profile.component.css'
 })
-export class AppComponent implements OnInit {
-  title = 'modszert-frontend';
+export class ProfileComponent implements OnInit{
   profile: TUser | undefined | null;
 
   constructor(private authServiceService: AuthService) {

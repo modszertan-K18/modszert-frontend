@@ -1,4 +1,4 @@
-<section class="vh-100 ">
+<section class="vh-100">
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -6,7 +6,8 @@
           <div class="py-2 px-5 text-center">
             <form (ngSubmit)="onSubmit()">
               <div class="mb-md-5 mt-md-4">
-                <h6 class="fw-bold mb-2">Add a product for auction</h6>
+                <h6 class="fw-bold mb-4">Add a Product for Auction</h6>
+
                 <div class="form-outline form-white mb-4">
                   <input
                     [(ngModel)]="name"
@@ -16,7 +17,7 @@
                     name="productName"
                     required
                   />
-                  <label class="form-label" for="productName">Name Of The Product</label>
+                  <label class="form-label" for="productName">Name of the Product</label>
                 </div>
 
                 <div class="form-outline form-white mb-4">
@@ -26,7 +27,7 @@
                     class="form-control form-control-lg"
                     name="password"
                     required></textarea>
-                  <label class="form-label" for="productDescription">Description Of The Product</label>
+                  <label class="form-label" for="productDescription">Description of the Product</label>
                 </div>
 
                 <div class="form-outline form-white mb-4">
@@ -39,7 +40,7 @@
                     name="productStartingBid"
                     required
                   />
-                  <label class="form-label" for="productStartingBid">Starting bid in USD</label>
+                  <label class="form-label" for="productStartingBid">Starting Bid in USD</label>
                 </div>
 
                 <div class="form-outline form-white mb-4">
@@ -52,17 +53,15 @@
                     name="endTimeOfAuction"
                     required
                   />
-                  <label class="form-label" for="endTimeOfAuction">End time of auction</label>
+                  <label class="form-label" for="endTimeOfAuction">End Time of Auction</label>
                 </div>
 
                 <button class="btn btn-success btn-lg px-5" type="submit">Submit</button>
               </div>
             </form>
-
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-

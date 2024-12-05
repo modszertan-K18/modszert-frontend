@@ -1,0 +1,63 @@
+.card {
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent black */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.btn {
+  font-size: 1rem;
+  padding: 10px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+}
+
+.btn-primary {
+  background-color: #2575fc;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #1d5bd8;
+  box-shadow: 0 4px 10px rgba(37, 117, 252, 0.3);
+}
+
+.text-danger {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Ensure responsive design */
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 8px 20px;
+  }
+}

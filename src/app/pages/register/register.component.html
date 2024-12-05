@@ -1,57 +1,68 @@
-<div class="mask d-flex align-items-center h-100 ">
+<div class="mask d-flex align-items-center h-100 gradient-custom-3">
   <div class="container h-100 py-5">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-        <div class="card bg-dark text-white"   style="border-radius: 15px;">
+        <div class="card text-white bg-dark shadow-lg" style="border-radius: 15px;">
           <div class="card-body p-5">
             <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
             <form (ngSubmit)="onSubmit()">
+              <!-- Username -->
               <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example1cg">
+                  <i class="bi bi-person-fill me-2"></i>Username
+                </label>
                 <input
                   type="text"
                   name="username"
                   id="form3Example1cg"
                   class="form-control form-control-lg"
                   [(ngModel)]="username"
+                  placeholder="Enter your username"
                 />
-                <label class="form-label" for="form3Example1cg">Username</label>
               </div>
 
+              <!-- Password -->
               <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example4cg">
+                  <i class="bi bi-lock-fill me-2"></i>Password
+                </label>
                 <input
                   type="password"
                   name="password"
                   id="form3Example4cg"
                   class="form-control form-control-lg"
                   [(ngModel)]="password"
+                  placeholder="Enter your password"
                 />
-                <label class="form-label" for="form3Example4cg">Password</label>
               </div>
 
+              <!-- Confirm Password -->
               <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example4cdg">
+                  <i class="bi bi-lock-fill me-2"></i>Repeat your password
+                </label>
                 <input
                   type="password"
                   name="confirmPassword"
                   id="form3Example4cdg"
                   class="form-control form-control-lg"
                   [(ngModel)]="confirmPassword"
+                  placeholder="Repeat your password"
                 />
-                <label class="form-label" for="form3Example4cdg">Repeat your password</label>
               </div>
 
+              <!-- Register Button -->
               <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-success btn-lg text-body">Register</button>
+                <button type="submit" class="btn btn-primary btn-lg px-5 mb-3">Register</button>
               </div>
 
-              <p class="text-center text-white mt-5 mb-0">Already have an account?
-                <a href="/login">
-                  Login here
-                </a>
+              <!-- Login Link -->
+              <p class="text-center text-white mt-5 mb-0">
+                Already have an account?
+                <a href="/login" class="text-warning fw-bold">Login here</a>
               </p>
-
             </form>
-
           </div>
         </div>
       </div>

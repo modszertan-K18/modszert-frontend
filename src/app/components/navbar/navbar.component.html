@@ -1,15 +1,17 @@
-<div class="d-flex justify-content-between align-items-center px-4 py-4 bg-dark text-white" style="height: 50px">
-  <a href="/" class="m-0">Home</a>
+<div class="navbar d-flex justify-content-between align-items-center px-4 py-3 bg-dark text-white" style="height: 60px;">
+  <!-- Home link -->
+  <a href="/" class="navbar-brand text-white m-0">Home</a>
+
+  <!-- Profile section if logged in, otherwise login button -->
   <div *ngIf="profile; else notLoggedIn" class="d-flex gap-4 justify-content-between align-items-center">
     <p class="m-0">Logged in as: <strong>{{ profile?.username }}</strong></p>
-    <button (click)="logout()" class="btn btn-primary">Logout</button>
+    <button (click)="logout()" class="btn btn-outline-light">Logout</button>
   </div>
+
   <ng-template #notLoggedIn>
     <div class="d-flex gap-4 justify-content-between align-items-center">
-      <div>
-        Not logged in
-      </div>
-      <button (click)="goToLoginPage()" class="btn btn-primary">Login</button>
+      <div class="text-light">Not logged in</div>
+      <button (click)="goToLoginPage()" class="btn btn-outline-light">Login</button>
     </div>
   </ng-template>
 </div>

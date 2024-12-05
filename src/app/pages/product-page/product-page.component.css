@@ -1,16 +1,16 @@
+/* Card styles */
 .card {
   border-radius: 15px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-button {
-  transition: all 0.3s ease-in-out;
+/* Hover effect for rows inside card */
+.card-body div.row:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
+/* Progress bar styles */
 .progress {
   height: 20px;
   border-radius: 10px;
@@ -21,6 +21,18 @@ button:hover {
 .progress-bar {
   transition: width 0.5s ease;
 }
+
+/* Button hover effect */
+button {
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Keyframe for fading in the card */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -35,7 +47,49 @@ button:hover {
 .card {
   animation: fadeIn 0.8s ease-in-out;
 }
-.card-body div.row:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transition: background-color 0.3s;
+
+/* Card header and footer styles for day/night mode */
+.card-header,
+.card-footer {
+  border-radius: 1rem;
+}
+
+.card-header {
+  background-color: #2575fc;
+  color: white;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+}
+
+/* Styling for the product name, description, and prices */
+.row .fw-bold {
+  font-weight: bold;
+}
+
+.text-primary {
+  color: #0d6efd;
+}
+
+.text-success {
+  color: #28a745;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+/* Toggle button styling for Night Mode */
+.btn-secondary {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-secondary:hover {
+  background-color: #6c757d;
+  transform: scale(1.05);
+  opacity: 0.9;
 }

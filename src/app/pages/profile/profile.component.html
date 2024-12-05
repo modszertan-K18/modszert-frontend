@@ -1,10 +1,16 @@
 <div class="container my-4">
-  <div class="card p-2">
+  <div class="card p-3 shadow-lg bg-dark text-white">
     <div *ngIf="profile; else notLoggedIn">
-      You are logged in as {{ profile?.username }}
+      <h3 class="text-center mb-4">Welcome, {{ profile?.username }}!</h3>
+      <div class="text-center">
+        <button class="btn btn-danger btn-lg">Log Out</button>
+      </div>
     </div>
     <ng-template #notLoggedIn>
-      You are not logged in
+      <h3 class="text-center text-danger">You are not logged in</h3>
+      <div class="text-center">
+        <a href="/login" class="btn btn-primary btn-lg">Login</a>
+      </div>
     </ng-template>
   </div>
 </div>

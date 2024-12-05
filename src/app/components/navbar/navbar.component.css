@@ -1,0 +1,76 @@
+/* Navbar styles */
+.navbar {
+  background-color: #343a40; /* Dark background */
+  border-bottom: 2px solid #495057; /* Subtle border under navbar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  border-radius: 8px;
+}
+
+.navbar-brand {
+  font-size: 1.2rem; /* Slightly larger font for the home link */
+  font-weight: bold;
+  text-decoration: none; /* Remove underline */
+  color: white; /* Ensuring it matches the color scheme */
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  text-decoration: underline; /* Underline on hover */
+  color: #0d6efd; /* Blue color on hover for emphasis */
+}
+
+button {
+  transition: all 0.3s ease;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Buttons for login and logout */
+.btn-outline-light {
+  border-color: #ffffff;
+  color: #ffffff;
+  background-color: transparent;
+  padding: 6px 15px;
+}
+
+.btn-outline-light:hover {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  color: white;
+}
+
+/* Spacing adjustments */
+.d-flex {
+  display: flex;
+}
+
+.gap-4 {
+  gap: 1.5rem;
+}
+
+/* Responsive styles for smaller devices */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .d-flex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-brand {
+    margin-bottom: 10px;
+  }
+
+  .gap-4 {
+    gap: 0.5rem;
+  }
+}

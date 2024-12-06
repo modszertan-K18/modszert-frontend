@@ -1,7 +1,7 @@
 export interface Product {
   auctionEndTime: string;
   auctionStartTime: string | null;
-  currentBid: number;
+  currentPrice: number;
   productDescription: string;
   productId: number;
   productName: string;

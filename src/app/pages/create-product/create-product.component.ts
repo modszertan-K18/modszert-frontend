@@ -3,6 +3,8 @@ import {FormsModule} from '@angular/forms';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {TUser} from '../../../types/TUser';
+import {AuthService} from '../../services/AuthService/auth.service';
 
 @Component({
   selector: 'app-create-product',
@@ -19,7 +21,16 @@ export class CreateProductComponent {
   productStartingBid: number = 0;
   endTimeOfAuction: Date = new Date();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  user: TUser | undefined | null;
+
+  constructor(private authServiceService: AuthService, private http : HttpClient, private router: Router) {
+  }
+  ngOnInit() {
+    this.authServiceService.fetchProfile();
+    this.authServiceService.profile$.subscribe((profile) => {
+      this.user = profile;
+    });
+  }
 
 
   onSubmit() {
@@ -28,6 +39,7 @@ export class CreateProductComponent {
       productDescription: this.description,
       startingPrice: this.productStartingBid,
       auctionEndTime: this.endTimeOfAuction,
+      productOwnerId:this.user?.userId
     }
 
 

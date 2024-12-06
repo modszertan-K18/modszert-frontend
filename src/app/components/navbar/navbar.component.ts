@@ -20,7 +20,12 @@ export class NavbarComponent implements OnInit {
 
   constructor(private authServiceService: AuthService, private http : HttpClient, private router: Router) {
   }
-
+  ngOnInit() {
+    this.authServiceService.fetchProfile();
+    this.authServiceService.profile$.subscribe((profile) => {
+      this.profile = profile;
+    });
+  }
   logout() {
     this.http.post(`${environment.backendBaseUrl}/auth/logout`, {}, {
       withCredentials: true
@@ -43,11 +48,5 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  ngOnInit() {
-    this.authServiceService.fetchProfile();
-    this.authServiceService.profile$.subscribe((profile) => {
-      console.log(profile);
-      this.profile = profile;
-    });
-  }
+
 }

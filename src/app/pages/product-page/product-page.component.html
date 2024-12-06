@@ -92,10 +92,14 @@
     </div>
 
     <!-- Card Footer -->
-    <div class="card-footer text-center" [ngClass]="{'bg-white': !isNightMode, 'bg-dark text-light': isNightMode}"
-         style="border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem;">
+    <div
+      class="card-footer text-center d-flex justify-content-between align-items-center"
+      [ngClass]="{'bg-white': !isNightMode, 'bg-dark text-light': isNightMode}"
+      style="border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem;">
       <button class="btn btn-danger btn-lg px-4" (click)="returnToHome()">Return to Homepage</button>
+      <button class="btn btn-danger btn-lg px-4 ms-auto" (click)="delete()">Delete</button>
     </div>
+
   </div>
 
   <!-- Night Mode Toggle -->

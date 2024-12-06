@@ -90,6 +90,18 @@ export class ProductPageComponent {
     });
   }
 
+  delete(){
+    this.http.delete(`${environment.backendBaseUrl}/product/delete/${this.productId}`).subscribe({
+      next: (response: any) => {
+        console.log('Deleted product:', response);
+        this.router.navigate(['/']);
+      },
+      error: (error: any) => {
+        console.error('Deleting product failed:', error);
+      }
+    })
+  }
+
   protected readonly Number = Number;
 
 }

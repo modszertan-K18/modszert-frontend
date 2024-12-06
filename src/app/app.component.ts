@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.authServiceService.fetchProfile();
     this.authServiceService.profile$.subscribe((profile) => {
-      console.log(profile);
       this.profile = profile;
     });
   }

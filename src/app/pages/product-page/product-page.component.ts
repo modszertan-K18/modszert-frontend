@@ -5,6 +5,8 @@ import {environment} from '../../../environments/environment';
 import {NgClass} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
 import {Product} from './product-page.model';
+import {TUser} from '../../../types/TUser';
+import {AuthService} from '../../services/AuthService/auth.service';
 
 
 @Component({
@@ -32,24 +34,34 @@ export class ProductPageComponent {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private http: HttpClient) {}
+              private http: HttpClient,
+              private authService: AuthService,) {}
   protected currentPrice!: number;
   productId!:number;
   productName?:string;
   productDescription?:string;
-  startingPrice!:string;
+  startingPrice!:number;
   bid: number =1;
+  user:TUser|undefined|null;
 
+  ngOnInit() {
+    this.fetchProduct(this.route.snapshot.params['id']);
+
+    this.authService.fetchProfile();
+    this.authService.profile$.subscribe((profile) => {
+      this.user = profile;
+    });
+  }
   fetchProduct = (productId: number) => {
     this.http.get<Product>(`${environment.backendBaseUrl}/product/${productId}`).subscribe({
       next: (response: Product) => {
         console.log('Fetched product:', response);
         this.product = response;
-        this.currentPrice = response.currentBid;
+        this.currentPrice = response.currentPrice;
         this.productDescription = response.productDescription;
         this.productId = response.productId;
         this.productName = response.productName;
-        this.startingPrice = String(response.startingPrice);
+        this.startingPrice = response.startingPrice;
       },
       error: (error: any) => {
         console.error('Fetching product failed', error);
@@ -69,9 +81,7 @@ export class ProductPageComponent {
   returnToHome(): void {
     this.router.navigate(['/']);
   }
-  ngOnInit() {
-    this.fetchProduct(this.route.snapshot.params['id']);
-  }
+
 
   sendBid = (bid: number) => {
 
@@ -80,7 +90,10 @@ export class ProductPageComponent {
       return;
     }
     this.currentPrice += bid;
-    this.http.post(`${environment.backendBaseUrl}/product/${this.productId}/bid`, this.bid).subscribe({
+    this.http.post(`${environment.backendBaseUrl}/product/${this.productId}/bid`, {
+      bidAmount: this.bid,
+      userId: this.user?.userId
+    }).subscribe({
       next: (response: any) => {
         console.log('Bid sent successfully', response);
       },

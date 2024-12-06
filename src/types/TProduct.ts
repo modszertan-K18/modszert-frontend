@@ -3,4 +3,5 @@ export type TProduct = {
   productName: string,
   productDescription: string,
   startingPrice: number,
+  currentPrice: number,
 }

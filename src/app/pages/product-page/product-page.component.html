@@ -9,7 +9,7 @@
       aria-valuenow="25"
       aria-valuemin="0"
       aria-valuemax="100">
-      The product's value increased by: {{(currentPrice-Number(startingPrice))/Number(startingPrice) * 100}}%.
+      The product's value increased by: {{ (currentPrice - Number(startingPrice)) / Number(startingPrice) * 100 }}%.
     </div>
   </div>
 
@@ -70,6 +70,24 @@
         </div>
       </div>
 
+      <div class="row mb-3">
+        <div class="col-sm-4 fw-bold" [ngClass]="{'text-secondary': !isNightMode, 'text-light': isNightMode}">
+          Auction ends in:
+        </div>
+        <div class="col-sm-8 fw-bold text-primary">
+          {{ countdown }}
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-4 fw-bold" [ngClass]="{'text-secondary': !isNightMode, 'text-light': isNightMode}">
+           End of auction date:
+        </div>
+        <div class="col-sm-8 text-primary">
+          {{ product.auctionEndTime | date: 'MMMM d, y, h:mm a' }}
+        </div>
+      </div>
+
       <!-- Bid Input -->
       <div class="row align-items-center mb-4">
         <div class="col-sm-4 fw-bold" [ngClass]="{'text-secondary': !isNightMode, 'text-light': isNightMode}">
@@ -83,7 +101,7 @@
             placeholder="Enter your bid"
             [style.border-color]="isNightMode ? '#adb5bd' : '#0d6efd'"
             min="{{ startingPrice }}"
-            required />
+            required/>
         </div>
         <div class="col-sm-4 text-center">
           <button class="btn btn-success btn-lg px-4" (click)="sendBid(bid)">Submit Bid</button>

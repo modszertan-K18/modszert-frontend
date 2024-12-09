@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
     }).subscribe({
       next: (response: any) => {
          console.log('Logout successful', response);
-         this.authServiceService.fetchProfile();
+         window.location.reload();
       },
       error: (error) => {
         console.error('logout failed', error);
@@ -51,6 +51,4 @@ export class NavbarComponent implements OnInit {
   goToProfilePage(){
     this.router.navigate(['/profile']);
   }
-
-
 }

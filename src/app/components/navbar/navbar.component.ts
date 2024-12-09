@@ -48,5 +48,9 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  goToProfilePage(){
+    this.router.navigate(['/profile']);
+  }
+
 
 }

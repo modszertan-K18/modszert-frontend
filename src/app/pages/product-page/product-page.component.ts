@@ -117,6 +117,11 @@ export class ProductPageComponent implements OnInit {
       console.log('The bid must be at least 1$');
       return;
     }
+    if(!this.user)
+    {
+      console.log('No user found.');
+      return;
+    }
     this.currentPrice += bid;
     this.http
       .post(`${environment.backendBaseUrl}/product/${this.productId}/bid`, {

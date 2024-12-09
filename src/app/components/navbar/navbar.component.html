@@ -4,7 +4,7 @@
 
   <!-- Profile section if logged in, otherwise login button -->
   <div *ngIf="profile; else notLoggedIn" class="d-flex gap-4 justify-content-between align-items-center">
-    <p class="m-0">Logged in as: <strong>{{ profile?.username }}</strong></p>
+    <p class="m-0">Logged in as: <strong><button class="btn-user-profile" (click)="goToProfilePage()">{{ profile?.username }}</button></strong></p>
     <button (click)="logout()" class="btn btn-outline-light">Logout</button>
   </div>
 

@@ -1,11 +1,31 @@
 <div class="container my-4">
   <div class="card p-3 shadow-lg bg-dark text-white">
     <div *ngIf="profile; else notLoggedIn">
-      <h3 class="text-center mb-4">Welcome, {{ profile?.username }}!</h3>
+      <h3 class="text-center">Welcome, {{profile?.username}}!</h3>
+      <h5 class="text-center mb-4">You currently have, {{products.length}} auction(s).</h5>
+
+      <!-- Auctions Section -->
+      <div class="row">
+        <div *ngFor="let product of products" class="col-md-4 mb-4">
+          <div class="card h-100 bg-dark text-white shadow-lg border-0">
+            <div class="card-body" (click)="navigateToProductPage(product)">
+              <h5 class="card-title">{{product.productName}}</h5>
+              <p class="card-text">{{product.productDescription}}</p>
+              <button class="btn btn-warning">See</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="products.length == 0" class="empty-cards-div">
+        <h4 style="color: grey">This is where your auction(s) will appear.</h4>
+      </div>
+
       <div class="text-center">
         <button class="btn btn-danger btn-lg">Log Out</button>
       </div>
     </div>
+
     <ng-template #notLoggedIn>
       <h3 class="text-center text-danger">You are not logged in</h3>
       <div class="text-center">

@@ -30,6 +30,16 @@ button:hover {
   opacity: 0.9;
 }
 
+/* Button for user profile */
+.btn-user-profile {
+  color: white;
+  background-color: transparent;
+  border-color: transparent;
+  font-variant: small-caps;
+  text-decoration: underline;
+  padding: 3px;
+}
+
 /* Buttons for login and logout */
 .btn-outline-light {
   border-color: #ffffff;

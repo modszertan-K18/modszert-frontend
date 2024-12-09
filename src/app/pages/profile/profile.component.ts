@@ -55,4 +55,18 @@ export class ProfileComponent implements OnInit{
     console.log({sourceProduct: product})
     this.router.navigate([`/product/${product.productId}`]);
   }
+
+  logout() {
+    this.http.post(`${environment.backendBaseUrl}/auth/logout`, {}, {
+      withCredentials: true
+    }).subscribe({
+      next: (response: any) => {
+        console.log('Logout successful', response);
+        this.authServiceService.fetchProfile();
+      },
+      error: (error) => {
+        console.error('logout failed', error);
+      }
+    });
+  }
 }

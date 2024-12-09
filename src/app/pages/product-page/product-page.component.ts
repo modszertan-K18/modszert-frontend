@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { environment } from '../../../environments/environment';
-import {DatePipe, NgClass} from '@angular/common';
+import {DatePipe, NgClass, NgIf} from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Product } from './product-page.model';
 import { TUser } from '../../../types/TUser';
@@ -12,12 +12,13 @@ import { interval, Subscription } from 'rxjs';
 @Component({
   selector: 'app-product-page',
   standalone: true,
-  imports: [FormsModule, NgClass, DatePipe],
+  imports: [FormsModule, NgClass, DatePipe, NgIf],
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.css'],
 })
 export class ProductPageComponent implements OnInit {
   isNightMode: boolean = false;
+  isUserSameAsSeller: boolean = false;
 
   protected productString: Params | undefined;
   product!: Product;
@@ -46,6 +47,8 @@ export class ProductPageComponent implements OnInit {
     this.authService.profile$.subscribe((profile) => {
       this.user = profile;
     });
+
+    this.checkIfUserIsSameAsSeller();
   }
 
   fetchProduct = (productId: number) => {
@@ -143,6 +146,19 @@ export class ProductPageComponent implements OnInit {
         },
       });
   }
+
+  checkIfUserIsSameAsSeller(){
+    this.http
+      .get(`${environment.backendBaseUrl}/product/${this.route.snapshot.params['id']}`)
+      .subscribe({
+        next: (response: any) => {
+          this.isUserSameAsSeller = response.productOwnerId == this.user?.userId;
+        },error (error: any) {
+          console.error('Cannot access product', error);
+        },
+      });
+  }
+
 
   ngOnDestroy() {
     if (this.countdownSubscription) {
